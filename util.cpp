@@ -3,6 +3,7 @@
 #include <cctype>
 #include <algorithm>
 #include "util.h"
+#include <unordered_set>
 
 using namespace std;
 std::string convToLower(std::string src)
@@ -14,17 +15,26 @@ std::string convToLower(std::string src)
 /** Complete the code to convert a string containing a rawWord
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
-{
+{ 
+  std::set<std::string> res;
+  string word = "";
 
-
-
-
-
-
-
-
-
-
+  rawWords = convToLower(rawWords);
+  for (char c : rawWords){
+    if (isalnum(c)){
+      word += c;
+    }
+    else {
+      if (word.size() >= 2){
+        res.insert(word);
+      }
+      word = "";
+    }
+  }
+  if (word.size() >= 2){
+    res.insert(word);
+  }
+  return res;
 }
 
 /**************************************************

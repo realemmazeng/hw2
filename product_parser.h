@@ -88,7 +88,6 @@ public:
                                   bool& error,
                                   std::string& errorMsg,
                                   int& lineno);
-
     std::string categoryID();
 
 protected:
